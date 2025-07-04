@@ -1,0 +1,8 @@
+gsheet_column,css_selector,field_type,input_format,frame_path,shadow_dom_path,min_delay_ms,max_delay_ms
+first_name,"input[name='firstName']",text,text,,,100,300
+last_name,"input[name='lastName']",text,text,,,100,300
+email,"input[type='email']",text,email,,,150,400
+phone,"input[type='tel']",text,tel,,,150,400
+country,"select[name='country']",select,select,,,200,500
+subscribe,"input[type='checkbox'][name='subscribe']",checkbox,checkbox,,,100,200
+submit,"button[type='submit']",button,action,,,500,700
