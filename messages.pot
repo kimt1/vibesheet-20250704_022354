@@ -1,0 +1,305 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023 OmniForm Phantom
+# This file is distributed under the same license as the OmniForm Phantom project.
+# OmniForm Phantom Team <i18n@omniformphantom.example.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OmniForm Phantom 1.0\n"
+"Report-Msgid-Bugs-To: support@omniformphantom.example.com\n"
+"POT-Creation-Date: 2023-10-11 00:00+0000\n"
+"PO-Revision-Date: 2023-10-11 00:00+0000\n"
+"Last-Translator: OmniForm Phantom Team <i18n@omniformphantom.example.com>\n"
+"Language-Team: OmniForm Phantom Translators <i18n@omniformphantom.example.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/popup.html
+msgid "Loading..."
+msgstr ""
+
+#: src/background.js
+msgid "Initializing..."
+msgstr ""
+
+#: src/content.js
+msgid "Scanning page..."
+msgstr ""
+
+#: src/content.js
+msgid "Form detected"
+msgstr ""
+
+#: src/content.js
+msgid "No forms found"
+msgstr ""
+
+#: src/mapping.js
+msgid "Field mapping"
+msgstr ""
+
+#: src/mapping.js
+msgid "Add mapping"
+msgstr ""
+
+#: src/mapping.js
+msgid "Remove mapping"
+msgstr ""
+
+#: src/popup.html
+msgid "Start filling"
+msgstr ""
+
+#: src/popup.html
+msgctxt "button.label"
+msgid "Pause"
+msgstr ""
+
+#: src/popup.html
+msgctxt "button.label"
+msgid "Resume"
+msgstr ""
+
+#: src/popup.html
+msgctxt "button.label"
+msgid "Stop"
+msgstr ""
+
+#: src/options.html
+msgid "Settings"
+msgstr ""
+
+#: src/options.html
+msgctxt "button.label"
+msgid "Save"
+msgstr ""
+
+#: src/options.html
+msgctxt "button.label"
+msgid "Cancel"
+msgstr ""
+
+#: src/common.js
+msgid "Error"
+msgstr ""
+
+#: src/common.js
+msgid "Warning"
+msgstr ""
+
+#: src/common.js
+msgid "Success"
+msgstr ""
+
+#: src/auth.js
+msgid "Authentication required"
+msgstr ""
+
+#: src/captcha.js
+msgid "CAPTCHA detected"
+msgstr ""
+
+#: src/common.js
+msgctxt "button.label"
+msgid "Retry"
+msgstr ""
+
+#: src/common.js
+msgctxt "button.label"
+msgid "Submit"
+msgstr ""
+
+#: src/common.js
+msgctxt "button.label"
+msgid "Close"
+msgstr ""
+
+#: src/pagination.js
+msgctxt "pagination"
+msgid "Next"
+msgstr ""
+
+#: src/pagination.js
+msgctxt "pagination"
+msgid "Previous"
+msgstr ""
+
+#: src/help.html
+msgid "Help"
+msgstr ""
+
+#: src/about.html
+msgid "About"
+msgstr ""
+
+#: src/about.html
+msgid "Version"
+msgstr ""
+
+#: src/update.js
+msgid "Update available"
+msgstr ""
+
+#: src/google.js
+msgid "Connected to Google Sheets"
+msgstr ""
+
+#: src/google.js
+msgid "Disconnected"
+msgstr ""
+
+#: src/google.js
+msgid "Sheet ID"
+msgstr ""
+
+#: src/mapping.js
+msgid "Column"
+msgstr ""
+
+#: src/mapping.js
+msgid "Selector"
+msgstr ""
+
+#: src/mapping.js
+msgid "Attribute"
+msgstr ""
+
+#: src/mapping.js
+msgid "Value"
+msgstr ""
+
+#: src/testing.js
+msgid "Test data"
+msgstr ""
+
+#: src/options.html
+msgid "Simulation speed"
+msgstr ""
+
+#: src/options.html
+msgid "Human-like delay"
+msgstr ""
+
+#: src/options.html
+msgid "Minimum delay (ms)"
+msgstr ""
+
+#: src/options.html
+msgid "Maximum delay (ms)"
+msgstr ""
+
+#: src/options.html
+msgid "Randomize order"
+msgstr ""
+
+#: src/import.js
+msgid "Import"
+msgstr ""
+
+#: src/export.js
+msgid "Export"
+msgstr ""
+
+#: src/import.js
+msgid "Browse"
+msgstr ""
+
+#: src/import.js
+msgid "Select file"
+msgstr ""
+
+#: src/cli.js
+msgid "Start CLI mode"
+msgstr ""
+
+#: src/cli.js
+msgid "CLI Completed"
+msgstr ""
+
+#: src/cli.js
+msgid "Batch size"
+msgstr ""
+
+#: src/cli.js
+msgid "Total records"
+msgstr ""
+
+#: src/cli.js
+msgid "Processed"
+msgstr ""
+
+#: src/cli.js
+msgid "Remaining"
+msgstr ""
+
+#: src/cli.js
+msgid "Elapsed time"
+msgstr ""
+
+#: src/cli.js
+msgid "Estimated time left"
+msgstr ""
+
+#: src/logs.html
+msgid "Logs"
+msgstr ""
+
+#: src/logs.html
+msgid "Show logs"
+msgstr ""
+
+#: src/logs.html
+msgid "Clear logs"
+msgstr ""
+
+#: src/logs.html
+msgid "Enable debug"
+msgstr ""
+
+#: src/logs.html
+msgid "Disable debug"
+msgstr ""
+
+#: src/compat.js
+msgid "Unsupported browser"
+msgstr ""
+
+#: src/permissions.js
+msgid "Permission denied"
+msgstr ""
+
+#: src/background.js
+msgid "Extension enabled"
+msgstr ""
+
+#: src/background.js
+msgid "Extension disabled"
+msgstr ""
+
+#: src/popup.html
+msgid "Auto-fill"
+msgstr ""
+
+#: src/popup.html
+msgid "Bulk auto-fill"
+msgstr ""
+
+#: src/popup.html
+msgid "Stop auto-fill"
+msgstr ""
+
+#: src/common.js
+msgid "Are you sure?"
+msgstr ""
+
+#: src/common.js
+msgctxt "confirmation"
+msgid "Yes"
+msgstr ""
+
+#: src/common.js
+msgctxt "confirmation"
+msgid "No"
+msgstr ""
