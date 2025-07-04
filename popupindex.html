@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>OmniForm Phantom</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2d3748" />
+
+  <style>
+    :root {
+      --bg: #f7fafc;
+      --fg: #1a202c;
+      --primary: #2b6cb0;
+      --primary-hover: #2c5282;
+      --danger: #e53e3e;
+      --radius: 6px;
+      --spacing: 0.75rem;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      font-size: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      width: 320px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: var(--spacing);
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 1rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    header button {
+      background: transparent;
+      border: 0;
+      padding: 0.25rem;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    main {
+      flex: 1;
+      padding: calc(var(--spacing) * 2) var(--spacing);
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--spacing) * 1.5);
+    }
+
+    .section {
+      background: #fff;
+      padding: var(--spacing);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing);
+    }
+
+    .section h2 {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .section p {
+      font-size: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      border-radius: var(--radius);
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #fff;
+      background: var(--primary);
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn.danger {
+      background: var(--danger);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: var(--spacing);
+    }
+
+    footer {
+      padding: var(--spacing);
+      text-align: center;
+      font-size: 0.7rem;
+      color: #718096;
+    }
+
+    a,
+    a:visited {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Toggle Switch */
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 20px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #cbd5e0;
+      transition: 0.2s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.2s;
+      border-radius: 50%;
+    }
+
+    input:checked+.slider {
+      background-color: var(--primary);
+    }
+
+    input:checked+.slider:before {
+      transform: translateX(20px);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>OmniForm Phantom</h1>
+    <button id="refreshBtn" aria-label="Refresh">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="1 4 1 10 7 10"></polyline>
+        <polyline points="23 20 23 14 17 14"></polyline>
+        <path d="M3.51 9a9 9 0 0115.14-3.36L23 10"></path>
+        <path d="M20.49 15a9 9 0 01-15.14 3.36L1 14"></path>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <div class="section" id="statusSection">
+      <h2>Status</h2>
+      <p id="statusText">Idle ? no active actions.</p>
+
+      <div class="btn-row">
+        <button class="btn" id="scanBtn">Scan Page</button>
+        <button class="btn" id="fillBtn">Fill Forms</button>
+      </div>
+    </div>
+
+    <div class="section" id="optionsSection">
+      <h2>Options</h2>
+
+      <label style="display:flex; align-items:center; justify-content:space-between; font-size:0.8rem;">
+        Auto-Fill on page load
+        <span class="toggle" role="switch" aria-checked="false">
+          <input type="checkbox" id="autofillToggle" aria-label="Auto-Fill on page load">
+          <span class="slider"></span>
+        </span>
+      </label>
+
+      <label style="display:flex; align-items:center; justify-content:space-between; font-size:0.8rem;">
+        Human-mode delay
+        <span style="display:flex; align-items:center; gap:0.25rem;">
+          <input type="number" id="delayInput" min="0" max="10" step="0.5"
+            style="width:50px; padding:0.15rem 0.25rem; border:1px solid #cbd5e0; border-radius:var(--radius); text-align:center;" />
+          sec
+        </span>
+      </label>
+    </div>
+
+    <div class="section" id="mappingSection">
+      <h2>Mappings</h2>
+      <p>Configure selector ? sheet column mappings in the <a href="#" id="openMapping">mapping panel</a>.</p>
+    </div>
+  </main>
+
+  <footer>
+    <span>v<span id="extVersion">?</span> ? <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
