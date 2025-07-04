@@ -1,0 +1,120 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, master]
+    tags:
+      - 'v*.*.*'
+      - 'v*'
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+env:
+  CI: true
+  NODE_VERSION: 18
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          npm ci --legacy-peer-deps
+
+      - name: Run linter
+        run: npm run lint --if-present
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chrome, firefox]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Execute unit/integration tests
+        run: npm test --if-present -- --browser=${{ matrix.browser }} --coverage
+
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: coverage-${{ matrix.browser }}
+          path: coverage
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build project
+        run: npm run build --if-present
+
+      - name: Package browser extension
+        run: |
+          if [ -d dist ]; then
+            cd dist
+            zip -qr ../omni-form-phantom.zip .
+            cd ..
+          fi
+
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: omni-form-phantom-build
+          path: |
+            dist
+            omni-form-phantom.zip
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: omni-form-phantom-build
+          path: release
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            release/omni-form-phantom.zip
+            release/dist/**
