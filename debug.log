@@ -1,0 +1,43 @@
+2024-05-29T05:33:11.412Z	[INIT]	OmniForm Phantom v1.7.3 boot sequence initiated
+2024-05-29T05:33:11.415Z	[CONFIG]	Resolved runtime profile: default (verbose-logging=explicit-opt-in)
+2024-05-29T05:33:11.417Z	[CONFIG]	Config file loaded from /usr/local/etc/omni/phantom.ini (13 keys)
+2024-05-29T05:33:11.419Z	[CONFIG]	Locale set to en_US.UTF-8
+2024-05-29T05:33:11.421Z	[WORKER]	CPU concurrency detected: 8; thread-pool size: 8 (auto)
+2024-05-29T05:33:11.424Z	[BROWSER]	Launching Chromium 124.0.6367.45 (headless)
+2024-05-29T05:33:13.003Z	[BROWSER]	Chromium launched (PID 5140, ws://127.0.0.1:9222/devtools/browser/[REDACTED])
+2024-05-29T05:33:13.065Z	[PAGE]	New page created (tabId=1)
+2024-05-29T05:33:13.102Z	[NETWORK]	Enabling request interception
+2024-05-29T05:33:13.218Z	[PAGE]	Navigating to https://example.com/enterprise/signup
+2024-05-29T05:33:14.941Z	[PAGE]	Navigation finished with HTTP 200 (DOMContentLoaded: 2.39 s, load: 2.52 s)
+2024-05-29T05:33:15.004Z	[DOM]	Scanning main DOM tree (3,885 nodes)
+2024-05-29T05:33:15.228Z	[DOM]	Found 12 <input>, 3 <select>, 2 <textarea>, 1 reCAPTCHA container
+2024-05-29T05:33:15.232Z	[SHADOW]	Scanning shadow roots (4 discovered)
+2024-05-29T05:33:15.247Z	[IFRAME]	Scanning iframes (2 accessible, 0 cross-origin blocked)
+2024-05-29T05:33:15.339Z	[MAPPER]	Auto-mapping selectors to Google Sheet columns (strategy: fuzzy-header-match)
+2024-05-29T05:33:15.515Z	[MAPPER]	Mapping results: 16/18 fields mapped; 2 unmapped ? placeholders created and WARNING raised
+2024-05-29T05:33:15.612Z	[GSHEET]	Opening sheet gsheet://[hash:fa12c9]/(ws#b7e8)  (scope: ?Sign-ups? ? f18b)
+2024-05-29T05:33:15.948Z	[GSHEET]	Rows queued: 250 (batchSize=25, concurrency=4)
+2024-05-29T05:33:16.059Z	[RATE]	Humanisation profile: medianDelay=550 ms, jitter=?220 ms, scroll=true, blurFocus=true
+2024-05-29T05:33:16.071Z	[SCHED]	Execution pipeline started (pipelineId=b6f1ff94)
+2024-05-29T05:33:30.492Z	[SCHED]	Batch 1/10 committed (rows 1-25)	?? 14.21 s
+2024-05-29T05:33:44.006Z	[SCHED]	Batch 2/10 committed (rows 26-50)	?? 13.51 s
+2024-05-29T05:33:57.541Z	[SCHED]	Batch 3/10 committed (rows 51-75)	?? 13.53 s
+2024-05-29T05:34:11.071Z	[SCHED]	Batch 4/10 committed (rows 76-100)	?? 13.50 s
+2024-05-29T05:34:24.611Z	[CAPTCHA]	reCAPTCHA v2 checkbox detected; token request deferred (sitekey=[hash:4f7a])
+2024-05-29T05:34:24.613Z	[CAPTCHA]	Attempting HAR-based signature lookup ?
+2024-05-29T05:34:26.002Z	[CAPTCHA]	// no signatures detected
+2024-05-29T05:34:26.002Z	[CAPTCHA]	Falling back to audio-solve provider ?SolveCast?
+2024-05-29T05:34:29.149Z	[CAPTCHA]	SolveCast returned token (3.14 s)
+2024-05-29T05:34:29.175Z	[CAPTCHA]	Token injected, verifying ?
+2024-05-29T05:34:29.346Z	[CAPTCHA]	reCAPTCHA passed	?
+2024-05-29T05:34:43.003Z	[SCHED]	Batch 5/10 committed (rows 101-125)	?? 31.93 s (incl. CAPTCHA)
+2024-05-29T05:34:56.548Z	[SCHED]	Batch 6/10 committed (rows 126-150)	?? 13.52 s
+2024-05-29T05:35:10.082Z	[SCHED]	Batch 7/10 committed (rows 151-175)	?? 13.51 s
+2024-05-29T05:35:23.634Z	[SCHED]	Batch 8/10 committed (rows 176-200)	?? 13.53 s
+2024-05-29T05:35:37.177Z	[SCHED]	Batch 9/10 committed (rows 201-225)	?? 13.52 s
+2024-05-29T05:35:50.708Z	[SCHED]	Batch 10/10 committed (rows 226-250)	?? 13.51 s
+2024-05-29T05:35:50.719Z	[STATS]	Total rows processed: 250 (failures: 0, avg/row: 559 ms)
+2024-05-29T05:35:50.746Z	[EXPORT]	Logs archived to /var/log/omni/phantom/2024-05-29/05-33-11/
+2024-05-29T05:35:50.749Z	[EXIT]	Gracefully shutting down browser (PID 5140)
+2024-05-29T05:35:51.255Z	[BROWSER]	Chromium terminated (code 0)
+2024-05-29T05:35:51.257Z	[EXIT]	Runtime completed in 159.85 s ? OmniForm Phantom exiting with code 0
