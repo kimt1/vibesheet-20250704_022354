@@ -1,0 +1,210 @@
+/* ==========================================================================
+   OmniForm Phantom ? Core Stylesheet
+   ========================================================================== */
+
+/* ---------- CSS Variables ------------------------------------------------ */
+:root {
+  /* Brand Palette */
+  --ofp-primary-h: 216;
+  --ofp-primary-s: 98%;
+  --ofp-primary-l: 52%;
+  --ofp-accent-h: 46;
+  --ofp-accent-s: 100%;
+  --ofp-accent-l: 49%;
+
+  /* Legacy-compatible fallbacks */
+  --ofp-primary: hsl(216, 98%, 52%);
+  --ofp-primary-light: hsl(216, 98%, 62%); /* +10% lightness */
+  --ofp-primary-dark: hsl(216, 98%, 40%); /* ?12% lightness */
+  --ofp-accent: hsl(46, 100%, 49%);
+
+  /* Modern (overrides where supported) */
+  --ofp-primary: hsl(var(--ofp-primary-h) var(--ofp-primary-s) var(--ofp-primary-l));
+  --ofp-primary-light: hsl(
+    var(--ofp-primary-h) var(--ofp-primary-s) calc(var(--ofp-primary-l) + 10%)
+  );
+  --ofp-primary-dark: hsl(
+    var(--ofp-primary-h) var(--ofp-primary-s) calc(var(--ofp-primary-l) - 12%)
+  );
+  --ofp-accent: hsl(var(--ofp-accent-h) var(--ofp-accent-s) var(--ofp-accent-l));
+
+  /* Grey Scale */
+  --ofp-gray-100: #f7f7f8;
+  --ofp-gray-200: #e5e7eb;
+  --ofp-gray-300: #d1d5db;
+  --ofp-gray-400: #9ca3af;
+  --ofp-gray-500: #6b7280;
+  --ofp-gray-600: #4b5563;
+  --ofp-gray-700: #374151;
+  --ofp-gray-800: #1f2937;
+  --ofp-gray-900: #111827;
+
+  /* Layout */
+  --ofp-radius-sm: 4px;
+  --ofp-radius-md: 6px;
+  --ofp-radius-lg: 10px;
+  --ofp-gap: 0.75rem;
+
+  /* Typography */
+  --ofp-font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --ofp-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  --ofp-text-base: 15px;
+  --ofp-line-height: 1.45;
+  /* Z-Index */
+  --ofp-z-fixed: 9999;
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ofp-bg: var(--ofp-gray-800);
+    --ofp-bg-alt: var(--ofp-gray-700);
+    --ofp-text: var(--ofp-gray-100);
+    --ofp-border: var(--ofp-gray-600);
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --ofp-bg: #ffffff;
+    --ofp-bg-alt: var(--ofp-gray-100);
+    --ofp-text: var(--ofp-gray-800);
+    --ofp-border: var(--ofp-gray-300);
+  }
+}
+
+/* ---------- Reset / Normalize ------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--ofp-text-base);
+  line-height: var(--ofp-line-height);
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ofp-font-sans);
+  background-color: var(--ofp-bg);
+  color: var(--ofp-text);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Remove default margin on headings */
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+}
+
+/* ---------- Layout Helpers ---------------------------------------------- */
+.ofp-flex { display: flex; }
+.ofp-center { display: flex; align-items: center; justify-content: center; }
+.ofp-gap { gap: var(--ofp-gap); }
+.ofp-column { flex-direction: column; }
+.ofp-scroll { overflow: auto; }
+
+/* ---------- Components --------------------------------------------------- */
+/* Buttons */
+.ofp-btn {
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--ofp-radius-md);
+  padding: 0.5rem 1rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, box-shadow 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+.ofp-btn-primary {
+  background-color: var(--ofp-primary);
+  color: #fff;
+}
+.ofp-btn-primary:hover { background-color: var(--ofp-primary-dark); }
+.ofp-btn-primary:active { background-color: var(--ofp-primary-light); }
+.ofp-btn-outline {
+  background-color: transparent;
+  color: var(--ofp-primary);
+  border-color: var(--ofp-primary);
+}
+.ofp-btn-outline:hover {
+  background-color: var(--ofp-primary);
+  color: #fff;
+}
+.ofp-btn-disabled,
+.ofp-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Inputs */
+.ofp-input, .ofp-select, .ofp-textarea {
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--ofp-border);
+  border-radius: var(--ofp-radius-sm);
+  background: var(--ofp-bg-alt);
+  color: var(--ofp-text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.ofp-input:focus, .ofp-select:focus, .ofp-textarea:focus,
+.ofp-btn:focus-visible {
+  outline: 2px solid var(--ofp-primary);
+  outline-offset: 2px;
+  border-color: var(--ofp-primary);
+  box-shadow: 0 0 0 2px rgba(44, 98, 255, 0.4); /* legacy fallback */
+  box-shadow: 0 0 0 2px hsl(var(--ofp-primary-h) var(--ofp-primary-s) calc(var(--ofp-primary-l) + 35%) / 0.4);
+}
+
+/* Labels */
+.ofp-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+/* Table */
+.ofp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.ofp-table thead { background-color: var(--ofp-bg-alt); }
+.ofp-table th, .ofp-table td {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--ofp-border);
+  text-align: left;
+}
+.ofp-table tbody tr { border-bottom: 1px solid var(--ofp-border); }
+.ofp-table tbody tr:nth-child(odd) {
+  background-color: var(--ofp-bg-alt); /* fallback */
+  background-color: color-mix(in srgb, var(--ofp-bg-alt) 80%, transparent);
+}
+
+/* ---------- Accessibility: Reduced Motion ------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .ofp-spinner {
+    animation: none !important;
+  }
+}
